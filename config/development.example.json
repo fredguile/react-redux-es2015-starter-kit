@@ -1,0 +1,14 @@
+{
+	"dynamicConfig": {
+		"interval": 10000
+	},
+	"server": {
+		"childProcesses": 1,
+		"port": 3000,
+		"enableReload": true,
+		"writePidFiles": true,
+		"masterShutdownTimeout": 5000,
+		"workerShutdownTimeout": 5000,
+		"antiHangTimeout": 20000
+	}
+}
