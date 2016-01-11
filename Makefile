@@ -3,7 +3,7 @@ NPM_RUN = npm run
 GULP = gulp
 
 NODE_ENV ?= development
-DEBUG ?= starter-kit:*
+DEBUG ?= starter-kit:* cluster-respawn:*
 RELOAD ?= false
 
 export NODE_ENV

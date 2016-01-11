@@ -6,7 +6,7 @@ import clusterRespawnApi from 'cluster-respawn';
 import debugLib from 'debug';
 import {inspect} from 'util';
 
-import statsSummary from './helpers/statsSummary';
+import statsSummary from '../app/core/helpers/statsSummary';
 
 const WATCH_INTERVAL = 1000; // 1s
 

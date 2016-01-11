@@ -11,18 +11,11 @@ if(!process.env.NODE_ENV) {
 
 const debug = debugLib('starter-kit:initializer:config');
 
-const initialConfig = {
-  server: {
-    root: process.cwd(),
-    env: process.env.NODE_ENV
-  }
-};
-
 promisifyAll(fs);
 
 export default function initConfig() {
-  const filename = `config/${initialConfig.server.env}.json`;
-  const filepath = path.resolve(initialConfig.server.root, filename);
+  const filename = `config/${process.env.NODE_ENV}.json`;
+  const filepath = path.resolve(process.cwd(), filename);
 
   return fs.statAsync(filepath)
     .then(stats => {
