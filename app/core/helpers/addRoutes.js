@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import debugLib from 'debug';
 
 import Routes from '../../components/Routes';
-import getInitialState from './initialState';
+import getInitialState from './getInitialState';
 import configureStore from './configureStore';
 import {reactToStringAsync, reactToStaticMarkupAsync} from './renderAsync';
 import Document from '../../components/Document';
