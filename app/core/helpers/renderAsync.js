@@ -22,8 +22,8 @@ function timedPromise(method, message) {
 
     return Promise.try(method.bind(this, ...args))
       .finally(() => {
-        const duration = timer.getSeconds();
-        debug(`${message} (${duration}s)`);
+        const duration = parseFloat(timer.getMilliseconds()).toFixed(2);
+        debug(`${message} (${duration} ms)`);
       });
   };
 };
