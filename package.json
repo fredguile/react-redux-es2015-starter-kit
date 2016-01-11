@@ -1,6 +1,6 @@
 {
   "name": "react-redux-es2015-starter-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My own starter kit for making a React/Redux web application",
   "main": "index.js",
   "scripts": {

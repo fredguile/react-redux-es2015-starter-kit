@@ -1,5 +1,6 @@
-import initConfig from './initializers/config';
+import initHub from './initializers/initHub';
+import initConfig from './initializers/initConfig';
 
 export default function bootstrap() {
-  return initConfig();
+  return initHub().then(hub => initConfig(hub));
 }

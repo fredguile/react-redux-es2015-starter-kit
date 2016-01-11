@@ -18,30 +18,31 @@ const debug = debugLib('starter-kit:configureApp');
 const assetsPath = path.resolve(__dirname, '../../../public');
 
 export default function configureApp(app, config) {
+  const {logging: {morganPattern}, assets: {staticURL}, bodyParser: {limit, parameterLimit}, csrfOptions} = config;
+
   // log each request
-  app.use(morgan('dev'));
+  morgan.token('pid', () => process.pid);
+  app.use(morgan(morganPattern));
 
   // serve assets
-  app.use('/public', express.static(assetsPath));
+  app.use(staticURL, express.static(assetsPath));
 
   // set cookies in req.cookies
   app.use(cookieParser());
 
   // Parse form bodies
   app.use(bodyParser.json({
-    limit: '1mb', // default: 100kb
+    limit: limit,
     type: ['application/json', 'application/*+json']
   }));
   app.use(bodyParser.urlencoded({
     extended: true,
-    limit: '1mb', // default: 100kb
-    parameterLimit: 10000 // default: 1000
+    limit,
+    parameterLimit
   }));
 
   // CSRF middleware
-  app.use(csurf({
-    cookie: {path: '/', httpOnly: true}
-  }));
+  app.use(csurf({cookie: csrfOptions}));
 
   // developers: add Webpack development middleware
   if(process.env.NODE_ENV === 'development') {

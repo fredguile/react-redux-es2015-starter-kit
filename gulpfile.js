@@ -9,8 +9,8 @@ var webpackConfig = {
   frontend: require('./config/webpack.frontend').default
 };
 
-// Load Gulp tasks
-['build', 'clean', 'devServer', 'devWatch', 'server']
+// Bootstrap Gulp development tasks
+['clean', 'build', 'devWatch', 'devServer']
   .map(function(name) { return require('./tasks/' + name).default; })
   .forEach(function(loadTask) {
     loadTask({
