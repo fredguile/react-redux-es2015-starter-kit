@@ -23,7 +23,7 @@ bootstrap()
 
     clusterRespawnApi.init(clusterSettings).boot();
 
-    if(process.env.RELOAD) { // restart dev server when config changes
+    if(process.env.RELOAD == 'true') { // restart dev server when config changes
       hub.on('configUpdate', () => {
         const newConfig = configStore.getCurrent();
         clusterRespawnApi.respawn(newConfig.server.childProcesses);
