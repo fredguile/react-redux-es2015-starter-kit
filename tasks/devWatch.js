@@ -8,7 +8,7 @@ import {inspect} from 'util';
 
 import statsSummary from '../app/core/helpers/statsSummary';
 
-const WATCH_INTERVAL = 1000; // 1s
+const WATCH_INTERVAL = 2000; // 2s
 
 const debug = debugLib('starter-kit:dev-watch');
 let initialStart = true;

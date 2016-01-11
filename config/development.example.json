@@ -1,14 +1,25 @@
 {
-	"dynamicConfig": {
-		"interval": 10000
-	},
 	"server": {
-		"childProcesses": 1,
+		"childProcesses": 2,
 		"port": 3000,
 		"enableReload": true,
 		"writePidFiles": true,
 		"masterShutdownTimeout": 5000,
 		"workerShutdownTimeout": 5000,
 		"antiHangTimeout": 20000
+	},
+	"logging": {
+		"morganPattern": "[:pid] :method :url :status :response-time ms - :res[content-length]"
+	},
+	"assets": {
+		"staticURL": "/public"
+	},
+	"bodyParser": {
+		"limit": "2mb",
+		"parameterLimit": 10000
+	},
+	"csrfOptions": {
+		"path": "/",
+		"httpOnly": true
 	}
 }

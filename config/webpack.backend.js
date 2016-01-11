@@ -56,7 +56,6 @@ const backendConfig = {
 };
 
 if(process.env.NODE_ENV === 'development') {
-  backendConfig.entry.push('./config/development.json');
   backendConfig.output.filename = 'backend.dev.js';
   backendConfig.debug = true;
   backendConfig.devtool = '#source-map';

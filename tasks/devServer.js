@@ -3,15 +3,19 @@
 import path from 'path';
 import clusterRespawnApi from 'cluster-respawn';
 import {merge} from 'lodash';
+import debugLib from 'debug';
 
+import configStore from '../app/core/configStore';
 import bootstrap from '../app/core/bootstrap';
 
+const debug = debugLib('starter-kit:devServer');
+
 export default function devServer(inject) {
-  const {gulp, webpackConfig: {backend: {output}}} = inject;
+  const {gulp, webpackConfig: {backend: {output}}, serverReload} = inject;
 
   gulp.task('dev-server', 'Start dev server.', done => {
     bootstrap()
-      .then(config => {
+      .then(({config, hub}) => {
         const {server} = config;
 
         const clusterSettings = merge({}, server, {
@@ -23,8 +27,12 @@ export default function devServer(inject) {
 
         clusterRespawnApi.init(clusterSettings).on('shutdown', done).boot();
 
-        // restart devServer when config changes
-        //hub.on('configUpdate', () => clusterMaster.respawn());
+        if(serverReload) { // restart dev server when config changes
+          hub.on('configUpdate', () => {
+            const newConfig = configStore.getCurrent();
+            clusterRespawnApi.respawn(newConfig.server.childProcesses);
+          });
+        }
       })
       .catch(err => {
         done(err);

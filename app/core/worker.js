@@ -13,7 +13,7 @@ if(!process.env.NODE_ENV) {
 }
 
 bootstrap()
-  .then(config => {
+  .then(({config}) => {
     const {server: {port, antiHangTimeout}} = config;
     const app = express();
 

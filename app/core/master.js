@@ -4,12 +4,13 @@ import {merge} from 'lodash';
 import debugLib from 'debug';
 
 import webpackBackendConfig from '../../config/webpack.backend';
+import configStore from './configStore';
 import bootstrap from './bootstrap';
 
 const debug = debugLib('starter-kit:master');
 
 bootstrap()
-  .then(config => {
+  .then(({config, hub}) => {
     const {server} = config;
     const {output} = webpackBackendConfig;
 
@@ -21,5 +22,12 @@ bootstrap()
     });
 
     clusterRespawnApi.init(clusterSettings).boot();
+
+    if(process.env.RELOAD) { // restart dev server when config changes
+      hub.on('configUpdate', () => {
+        const newConfig = configStore.getCurrent();
+        clusterRespawnApi.respawn(newConfig.server.childProcesses);
+      });
+    }
   })
   .catch(err => console.log(err));
