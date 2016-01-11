@@ -11,14 +11,15 @@ Feel free to fork this repo to start your own project.
 - [React](http://facebook.github.io/react/) with server side rendering on [expressjs](http://expressjs.com/) backend.
 - [React-router](https://github.com/rackt/react-router) for isomorphic routing.
 - [Redux](http://rackt.github.io/redux/) [Flux](https://facebook.github.io/flux/) with atomic [immutable.js](http://facebook.github.io/immutable-js) app state.
-- Shared server configuration managed using [Shared-Store](https://github.com/groupon/shared-store).
+- Hot reloading of client modules and reducers using [React-Hot-Loader](https://github.com/gaearon/react-hot-loader).
+- Shared cluster configuration managed by [Shared-Store](https://github.com/groupon/shared-store).
+- [Bootstrap](http://getbootstrap.com/) integration for styling.
 - [Eslint](http://eslint.org/) integration.
-- Hot reloading of client modules and reducers.
 - Server auto restart, or restart-on-demand using "make reload". 
 
 ### Quick Start
 
-This start kit has been configured for Node 4.x and NPM 3.x. Of course you can run it using Node 5.x.
+This starter kit has been optimized for Node 4.x and NPM 3.x. Of course, you can run it with Node 5.x.
 
 ```bash
 
@@ -42,11 +43,11 @@ react-redux-es2015-starter-kit/
  │   ├──components/            * some React components as example
  │   │
  │   ├──core/                  * default app behavior
- │   │   ├──bootstrap.js       * customize how master & workers processes initialize
- │   │   └──frontend/          * write client side bootstrap code here
+ │   │   ├──bootstrap.js       * master & workers processes initialization script
+ │   │   └──frontend/          * client-side bootstrap code & main CSS
  │   │
- │   ├──modules/               * a proposal folder for app modules
- │       ├──todoList/              * our infamous todo example
+ │   ├──modules/               * proposed folder for app modules
+ │       └──todoList/              * our infamous todo example using Redux
  │
  ├──build/                     * webpack build for backend code (optimized for Node 4.x)
  │
@@ -56,7 +57,7 @@ react-redux-es2015-starter-kit/
  │
  ├──tasks/                     * Gulp tasks for building project and starting server
  │
- ├──tmp/                       * Temperary copy of shared configuration
+ ├──tmp/                       * Temperary copy of the shared configuration
  │
  ├──index.js                   * Node start script
  ├──Makefile                   * For managing server lifecycle using make commands
