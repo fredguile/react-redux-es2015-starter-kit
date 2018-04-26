@@ -2,6 +2,8 @@
 My own starter kit for making a React/Redux web application using Webpack and ES2015.
 Feel free to fork this repo to start your own project.
 
+**NOTE: as this has been written in 2016, I wish you consider newer options. I'm just keeping the repo for the record.**
+
 ### Features: 
 
 - Written in ECMAScript 2015, transpiled by [Babel 6](https://babeljs.io/). 
