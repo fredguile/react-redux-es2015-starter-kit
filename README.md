@@ -1,4 +1,7 @@
-# react-redux-es2015-starter-kit
+# **DEPRECATED** - react-redux-es2015-starter-kit
+
+**[Obviously given its age, this project is no longer actively maintained]**
+
 My own starter kit for making a React/Redux web application using Webpack and ES2015.
 Feel free to fork this repo to start your own project.
 
